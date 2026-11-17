@@ -1,0 +1,18 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run PBT on library save",
+      "description": "Re-run the fast-check property suite whenever a library module changes.",
+      "when": {
+        "type": "fileSave",
+        "patterns": ["src/lib/**/*.ts"]
+      },
+      "then": {
+        "type": "runCommand",
+        "command": "npx vitest run src/lib",
+        "timeout": 120
+      }
+    }
+  ]
+}
