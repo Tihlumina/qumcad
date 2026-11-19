@@ -1,12 +1,13 @@
 import './style.css';
+import { renderAbout } from './pages/about';
 import { renderConsole } from './pages/console';
 import { renderFrame } from './pages/frame';
 import { renderEvidence } from './pages/evidence';
 import { renderDocs } from './pages/doc';
 
-type Route = 'console' | 'frame' | 'evidence' | 'docs';
+type Route = 'console' | 'frame' | 'evidence' | 'docs' | 'about';
 
-const ROUTES: Route[] = ['console', 'frame', 'evidence', 'docs'];
+const ROUTES: Route[] = ['console', 'frame', 'evidence', 'docs', 'about'];
 const DEFAULT_ROUTE: Route = 'console';
 
 const app = document.getElementById('app')!;
@@ -17,15 +18,19 @@ function currentRoute(): Route {
 }
 
 function renderNav(active: Route): string {
-  const links: Array<{ route: Route; label: string }> = [
+    const links: Array<{ route: Route; label: string }> = [
     { route: 'console', label: 'Console' },
     { route: 'frame', label: 'Lever Frame' },
     { route: 'evidence', label: 'Evidence Room' },
     { route: 'docs', label: 'Documentation' },
+    { route: 'about', label: 'About' },
   ];
   return `
     <nav class="nav">
-      <a class="nav-brand" href="#/console">Qum<span>cad</span></a>
+      <a class="nav-brand" href="#/console">
+  <img src="/qumcad-icon.png" alt="" class="nav-logo" />
+  Qum<span>cad</span>
+</a>
       <div class="nav-links">
         ${links
           .map(
@@ -48,6 +53,8 @@ function renderPage(route: Route): string {
       return renderEvidence();
     case 'docs':
       return renderDocs();
+          case 'about':
+      return renderAbout();
   }
 }
 

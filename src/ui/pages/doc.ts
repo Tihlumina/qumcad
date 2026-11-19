@@ -38,6 +38,25 @@ export function renderDocs(): string {
   ]
 }</div>
       </section>
+
+            <section class="doc-section">
+        <h2>Interlocking Rules (EARS)</h2>
+        <div class="rule-list">
+          <div class="rule-item" id="rule-EARS-ILK-01">
+            <span class="rule-id">EARS-ILK-01</span>
+            <span>WHEN Signal #1 is requested to CLEAR, THE SYSTEM SHALL require Point #2 to be PULL and FPL #3 to be PULL.</span>
+          </div>
+          <div class="rule-item" id="rule-EARS-ILK-02">
+            <span class="rule-id">EARS-ILK-02</span>
+            <span>WHEN Point #2 is RELEASE, THE SYSTEM SHALL prohibit Signal #1 from being pulled to CLEAR.</span>
+          </div>
+          <div class="rule-item" id="rule-EARS-ILK-03">
+            <span class="rule-id">EARS-ILK-03</span>
+            <span>WHEN any two routes would simultaneously occupy overlapping physical track blocks, THE SYSTEM SHALL block the later route's signal.</span>
+          </div>
+        </div>
+      </section>
+      
     </main>
   `;
 }

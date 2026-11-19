@@ -65,8 +65,24 @@ export function renderEvidence(): string {
           <p style="margin-top:1.25rem;font-size:0.85rem;color:var(--text-muted)">
             Shrink ratio 1.83x &bull; Seed: <code>1801376230</code>
           </p>
+          <button class="btn primary" id="replay-btn" style="margin-top:1rem">
+            ▶ Replay minimal counterexample
+          </button>
+
         </div>
       </div>
     </main>
   `;
 }
+
+window.addEventListener('qumcad:page-rendered', (e) => {
+  const detail = (e as CustomEvent).detail;
+  if (detail?.route === 'evidence') {
+    const btn = document.getElementById('replay-btn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('qumcad:replay'));
+      });
+    }
+  }
+});
